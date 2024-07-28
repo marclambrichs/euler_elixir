@@ -29,7 +29,7 @@ defmodule Euler.Globals do
   @doc """
   Primefactors
   """
-  def primefactors(n), do: primefactors(n, 2, []) |> Enum.uniq()
+  def primefactors(n), do: primefactors(n, 2, []) |> Enum.uniq
 
   def primefactors(n, n, factors), do: [n | factors]
   def primefactors(_n, divisor, factors) when divisor == 1, do: factors
