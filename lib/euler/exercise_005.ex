@@ -4,6 +4,8 @@ defmodule Euler.Exercise_005 do
   without any remainder.
 
   What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?
+
+
   """
   import Euler.Globals
 

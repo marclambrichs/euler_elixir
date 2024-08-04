@@ -4,10 +4,12 @@ defmodule Euler.Exercise_010 do
 
   Find the sum of all the primes below two million.
   """
+
   import Euler.Globals
 
   def solution(n \\ 2_000_000) do
-    primes(n)
-    |> Enum.reduce(0, &(&1 + &2))
+    primes()
+    |> Stream.take_while(fn x -> x < n end)
+    |> Enum.reduce(0, fn x, acc -> x + acc end)
   end
 end
