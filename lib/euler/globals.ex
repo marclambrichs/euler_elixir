@@ -26,6 +26,12 @@ defmodule Euler.Globals do
   defp is_prime?(_primes, 1), do: false
   defp is_prime?(primes, n), do: !Enum.any?(primes, &(rem(n, &1) == 0))
 
+  @doc """
+  Factors
+  """
+  def factors(max), do:
+    1..max
+    |> Enum.reduce([], fn x, acc -> if rem(max, x) == 0, do: [x | acc], else: acc end)
 
   @doc """
   Primefactors
