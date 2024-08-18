@@ -66,4 +66,15 @@ defmodule Euler.Globals do
   """
   def over(n, k) when n > k, do: div(fac(n), fac(k) * fac(n - k))
   def over(_, _), do: 0
+
+  @doc """
+  Permutations
+  """
+  def permutations([]), do: [[]]
+
+  def permutations(list) do
+    for elem <- list, rest <- permutations(list -- [elem]) do
+      [elem | rest]
+    end
+  end
 end
