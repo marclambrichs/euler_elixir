@@ -29,14 +29,15 @@ defmodule Euler.Globals do
   @doc """
   Factors
   """
-  def factors(max), do:
-    1..max
-    |> Enum.reduce([], fn x, acc -> if rem(max, x) == 0, do: [x | acc], else: acc end)
+  def factors(max),
+    do:
+      1..max
+      |> Enum.reduce([], fn x, acc -> if rem(max, x) == 0, do: [x | acc], else: acc end)
 
   @doc """
   Primefactors
   """
-  def primefactors(n), do: primefactors(n, 2, []) |> Enum.uniq
+  def primefactors(n), do: primefactors(n, 2, []) |> Enum.uniq()
 
   def primefactors(n, n, factors), do: [n | factors]
   def primefactors(_n, divisor, factors) when divisor == 1, do: factors
@@ -50,4 +51,19 @@ defmodule Euler.Globals do
   Fibonacci
   """
   def fibonacci(), do: Stream.unfold({0, 1}, fn {a, b} -> {a, {b, a + b}} end)
+
+  @doc """
+  Factorial
+  """
+  def fac(1), do: 1
+  def fac(n), do: n * fac(n - 1)
+
+  # or
+  def factorial(n), do: 1..n |> Enum.reduce(1, fn i, acc when i <= n -> acc * i end)
+
+  @doc """
+  n over k
+  """
+  def over(n, k) when n > k, do: div(fac(n), fac(k) * fac(n - k))
+  def over(_, _), do: 0
 end
