@@ -8,10 +8,10 @@ defmodule Euler.Globals do
   """
   def primes(), do: Stream.iterate(2, &(&1 + 1)) |> Stream.filter(&is_prime?(&1))
 
-  defp is_prime?(0), do: false
-  defp is_prime?(1), do: false
-  defp is_prime?(2), do: true
-  defp is_prime?(n), do: !Enum.any?(2..(n - 1), &(rem(n, &1) == 0))
+  def is_prime?(0), do: false
+  def is_prime?(1), do: false
+  def is_prime?(2), do: true
+  def is_prime?(n), do: !Enum.any?(2..(n - 1), &(rem(n, &1) == 0))
 
   def n_primes(n), do: primes() |> Enum.take(n)
 
