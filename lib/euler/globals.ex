@@ -72,9 +72,9 @@ defmodule Euler.Globals do
   """
   def permutations([]), do: [[]]
 
-  def permutations(list) do
-    for elem <- list, rest <- permutations(list -- [elem]) do
-      [elem | rest]
-    end
+  def permutations(list) when is_list(list) do
+    for elem <- list, rest <- permutations(list -- [elem]), do: [elem | rest]
   end
+
+  def permutations(n) when is_integer(n), do: 1..n |> Enum.to_list() |> permutations()
 end
