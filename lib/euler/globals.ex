@@ -59,6 +59,7 @@ defmodule Euler.Globals do
   def fac(n), do: n * fac(n - 1)
 
   # or
+  def factorial(0), do: 1
   def factorial(n), do: 1..n |> Enum.reduce(1, fn i, acc when i <= n -> acc * i end)
 
   @doc """
