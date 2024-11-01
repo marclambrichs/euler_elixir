@@ -7,6 +7,7 @@ defmodule Euler.Globals do
   Primes
   """
   def primes(), do: Stream.iterate(2, &(&1 + 1)) |> Stream.filter(&is_prime?(&1))
+  def primes_below(n), do: Stream.take_while(primes(), &(&1 <= n))
 
   def is_prime?(0), do: false
   def is_prime?(1), do: false
@@ -78,4 +79,9 @@ defmodule Euler.Globals do
   end
 
   def permutations(n) when is_integer(n), do: 1..n |> Enum.to_list() |> permutations()
+
+  @doc """
+  Translate list of digits to number.
+  """
+  def to_number(list) when is_list(list), do: Enum.reduce(list, 0, fn x, acc -> 10 * acc + x end)
 end

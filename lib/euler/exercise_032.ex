@@ -32,6 +32,4 @@ defmodule Euler.Exercise_032 do
     {second, third} = Enum.split(rest, b)
     {to_number(first), to_number(second), to_number(third)}
   end
-
-  defp to_number(list) when is_list(list), do: Enum.reduce(list, 0, fn x, acc -> 10 * acc + x end)
 end
