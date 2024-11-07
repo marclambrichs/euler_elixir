@@ -4,6 +4,11 @@ defmodule Euler.Globals do
   """
 
   @doc """
+  Composite numbers
+  """
+  def composites(), do: Stream.iterate(4, &(&1 + 1)) |> Stream.filter(&(!is_prime?(&1)))
+
+  @doc """
   Primes
   """
   def primes(), do: Stream.iterate(2, &(&1 + 1)) |> Stream.filter(&is_prime?(&1))
