@@ -71,6 +71,7 @@ defmodule Euler.Globals do
   @doc """
   n over k
   """
+  def over(n, n), do: 1
   def over(n, k) when n > k, do: div(fac(n), fac(k) * fac(n - k))
   def over(_, _), do: 0
 
