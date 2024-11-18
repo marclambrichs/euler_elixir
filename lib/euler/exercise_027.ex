@@ -29,6 +29,6 @@ defmodule Euler.Exercise_027 do
   def quadratic(a, b) do
     Stream.iterate(0, &(&1 + 1))
     |> Stream.map(&(&1 ** 2 + a * &1 + b))
-    |> Enum.take_while(&is_prime?(&1))
+    |> Enum.take_while(&is_prime?(abs(&1)))
   end
 end
