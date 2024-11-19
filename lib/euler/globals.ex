@@ -17,7 +17,7 @@ defmodule Euler.Globals do
   def is_prime?(0), do: false
   def is_prime?(1), do: false
   def is_prime?(2), do: true
-  def is_prime?(n), do: !Enum.any?(2..floor(:math.sqrt(n)) + 1, &(rem(n, &1) == 0))
+  def is_prime?(n), do: !Enum.any?(2..(floor(:math.sqrt(n)) + 1), &(rem(n, &1) == 0))
 
   def n_primes(n), do: primes() |> Enum.take(n)
 
@@ -90,4 +90,23 @@ defmodule Euler.Globals do
   Translate list of digits to number.
   """
   def to_number(list) when is_list(list), do: Enum.reduce(list, 0, fn x, acc -> 10 * acc + x end)
+
+  @doc """
+  Generate all possible subsets of a list
+  """
+  def subsets(list) do
+    0..length(list)
+    |> Enum.reduce([], fn x, acc ->
+      Enum.concat(combinations(x, list), acc)
+    end)
+  end
+
+  def combinations(0, _), do: [[]]
+  def combinations(_, []), do: []
+
+  def combinations(size, [h | t]) do
+    for elem <- combinations(size - 1, t) do
+      [h | elem]
+    end ++ combinations(size, t)
+  end
 end
