@@ -2,4 +2,6 @@
 
 ![CI](https://github.com/marclambrichs/euler.elixir/actions/workflows/elixir.yml/badge.svg)
 
-Provides solutions to all projecteuler.net problems written in Elixir.
+![Project Euler](https://projecteuler.net/profile/mlambrichs.png)
+
+Provides solutions to projecteuler.net problems written in Elixir.
