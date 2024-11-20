@@ -14,6 +14,12 @@ defmodule Euler.Globals do
   def primes(), do: Stream.iterate(2, &(&1 + 1)) |> Stream.filter(&is_prime?(&1))
   def primes_below(n), do: Stream.take_while(primes(), &(&1 <= n))
 
+  def primes(from, to),
+    do:
+      Stream.iterate(from, &(&1 + 1))
+      |> Stream.filter(&is_prime?/1)
+      |> Stream.take_while(&(&1 <= to))
+
   def is_prime?(0), do: false
   def is_prime?(1), do: false
   def is_prime?(2), do: true
@@ -88,6 +94,7 @@ defmodule Euler.Globals do
 
   @doc """
   Translate list of digits to number.
+  Or even beter: use Integer.undigits/2
   """
   def to_number(list) when is_list(list), do: Enum.reduce(list, 0, fn x, acc -> 10 * acc + x end)
 
